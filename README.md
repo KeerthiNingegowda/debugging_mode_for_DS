@@ -50,6 +50,8 @@ The main benefit of the debugger is that you get the option to walk the stack tr
 #### Why the "frozen state" matters for DS work specifically?
 Instead of the print-rerun-wait cycle on a 3 minute data load, you break once after the data load an then interrogate the state inetractively. Things like df.shapem df.dtypes etc., all can be computed agaist the thes live objects without paying the load cost again. This frozen state returns a REPL which you can use in debug console and dynamically query your data
 
+#### More resources
+1) You can find more about vscode debugger at (https://github.com/KeerthiNingegowda/debugging_mode_for_DS/blob/main/vscode_debugger_cheatseet.md)
 
 ## DS-tailored concepts
 
