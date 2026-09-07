@@ -1,10 +1,35 @@
 [project]
 name = "debugging-mode-for-ds"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "lightgbm>=4.7.0",
+    "optuna>=5.0.0",
     "pandas>=3.0.5",
     "ruff>=0.16.5",
+    "scikit-learn>=1.9.0",
+    "xgboost>=3.4.1",
+]
+
+[project.scripts]
+house-price-train = "house_price_prediction.cli:main"
+house-price-benchmark = "house_price_prediction.benchmark:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "house_price_prediction/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["house_price_prediction"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "nbclient>=0.11.0",
+    "nbformat>=5.11.1",
 ]
