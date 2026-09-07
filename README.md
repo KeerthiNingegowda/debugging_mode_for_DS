@@ -53,6 +53,8 @@ Instead of the print-rerun-wait cycle on a 3 minute data load, you break once af
 #### More resources
 1) You can find more about vscode debugger at (https://github.com/KeerthiNingegowda/debugging_mode_for_DS/blob/main/vscode_debugger_cheatseet.md)
 
-## DS-tailored concepts
+## Mock example for practice - DS tailored
+A simple modelling pipeline for house price prediction - (https://github.com/KeerthiNingegowda/debugging_mode_for_DS/blob/main/house_price_prediction )
 
+Vibe code chat export can be found at <TBD>
 
