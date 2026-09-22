@@ -26,7 +26,6 @@ def run(cfg: Config, data_path: str) -> None:
 
     splits = make_splits(df, cfg)
     study = tune(df, splits, cfg)
-    #study.trials_dataframe()
     best = base_params(cfg) | study.best_params | {"subsample_freq": 1}
     cv_mape, fold_scores = cv_score(best, df, splits, cfg)
     print(f"[cv] mape={cv_mape:.4f} folds={[round(s, 4) for s in fold_scores]}")
