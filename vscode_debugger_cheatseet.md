@@ -21,6 +21,8 @@ Your view should look something similar to this. I changed the value of c from d
 <li>F9 - toggle breakpoint</li>
 <li>F10 - Step over (run the current line, but don't go inside)</li>
 <li>F11 - Step into (go inside the function on this line)</li>
+<li>Shift + F11 - Get out of the function </li>
+<li>Shift + F5 - End the debugging session, but execution isnot aborted</li>
 </ul>
 
 ### Some quirks to get the setup right
@@ -29,6 +31,7 @@ Your view should look something similar to this. I changed the value of c from d
 a) You'll need a .vscode/launch.json. For this Cmd_Shift_P -> "Debug:Add Configuration"
 b) In that generated file, find or add the line "justMyCode": true
 c) Save and go on as usual
+3) F11 is enables yo "Show Desktop" by default on mac. Disable it if you want to use this key to Step into a function
 
 
 ### What are breakpoints and what are various options available?
@@ -44,6 +47,11 @@ A breakpoint is an instruction to runtime. Its basically telling to interpreter 
 <li><b>Exception breakpoint</b></li> - Not attached to a line. Best option to understand or debug the excepions or ypour ```try/except:pass``` blocks
 <li><b>Function breakpoint</b></li> - Stops on entry to the function wherever its called from. Handy when you now what is happening but not where
 </ol>
+
+#### Types of exception related breakpoints
+1) <b>Raised Exceptions - </b> This is one of the most noisiest ways of catching an exception. It will stop the instant any exception is raised, even if it is caught one line later. Pauses on most exceptions, so it fires the most
+2) <b>User uncaught exceptions - </b> this is the middle ground. Stops if your own code has no handler for the exception, or even if something outside your code - a framework or a kernel or library's to-level wrapper. Pauses on fewer. Use this as the default most of the times
+3) <b>Uncaught Exceptions - </b> stops only if the exception is never caught by anything, anywhere - meaning things that would genuinely crash your program if the debugger wasnt attached to it. Pauses on the fewest.
 
 
 #### Some quirks when working with breakpoints
