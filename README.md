@@ -14,7 +14,7 @@ VSCode allows breakpoints in files whose language has a registered debugger. So 
 ```
 code --list-extensions
 ```
-This should have ms-python.debugpy extension to be able to add the breakpoints easily from the UI; Otherwise you have to rely on manually adding them using breakpoints() which can be cumbersom
+This should have ms-python.debugpy extension to be able to add the breakpoints easily from the UI; Otherwise you have to rely on manually adding them using breakpoint() which can be cumbersom
 
 If you dont have this extension then add it using
 ```
@@ -29,7 +29,7 @@ A debugger basically freezes a running program at the moment a dev would choose 
 It doesn't mean that the entire program is in someway crystaliized or snapshotted. It means the execution of the program is suspended - still alive, still holding all its memory - just not scheduled to run
 
 #### What actually happens when you add a breakpoint?
-When the interpreter hits a set breakpoint, the debugger adapter basically tells the python interpreter to stop executing at that specific point, and the thread parks itself. The OS will not gives the program CPU time but holds everything as-is for this program up until the breakpoint. These will be the ones that will be held on to
+When the interpreter hits a set breakpoint, the debugger adapter basically tells the python interpreter to stop executing at that specific point, and the thread parks itself. The thread that hit the breakpoint waits, holding everything as it was at that line. The process itself stays alive, which is why you can still run code against it from the Debug Console.
 
 <ul>
 <li><b>Stack frames</b> - every active function call still sits on the stack with its own locals</li>
@@ -42,13 +42,13 @@ The main benefit of the debugger is that you get the option to walk the stack tr
 
 #### What is not "frozen"?
 <ul>
-<li><b>Wall clock time</b> - If you are trying to measure time, this will break. Some doing someting lke time.elapsed()</li>
+<li><b>Wall clock time</b> - If you are trying to measure time, this will break. Some doing someting lke time.perf_counter()</li>
 <li><b>Outside world won't stop</b> HTTP requests time out, DB connections and other timeouts will fail</li>
 <li><b>State can be mutated</b> - The Debug Console is not read-only. Typing df.dropna(inplace=True)modifies the program. Even evaluating something with side-effect like a property lazily-loading changes the run</li>
 </ul>
 
 #### Why the "frozen state" matters for DS work specifically?
-Instead of the print-rerun-wait cycle on a 3 minute data load, you break once after the data load an then interrogate the state inetractively. Things like df.shapem df.dtypes etc., all can be computed agaist the thes live objects without paying the load cost again. This frozen state returns a REPL which you can use in debug console and dynamically query your data
+Instead of the print-rerun-wait cycle on a 15 minute data load, you break once after the data load an then interrogate the state inetractively. Things like df.shapem df.dtypes etc., all can be computed agaist the thes live objects without paying the load cost again. This frozen state returns a REPL which you can use in debug console and dynamically query your data
 
 #### More resources
 1) You can find more about vscode debugger at (https://github.com/KeerthiNingegowda/debugging_mode_for_DS/blob/main/vscode_debugger_cheatseet.md)
