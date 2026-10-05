@@ -7,7 +7,7 @@ This repo consists of exploration related to debugging mode in VSCode. The explo
 4) Where does using AI to understand vibe-coded applications genuinely be useful and fall short?
 
 
-<b><u>Medium blog:-</u></b> TBD
+<b><u>Medium blog:-</u></b> https://medium.com/@keerthi.ningegowda/to-pause-or-to-prompt-or-to-print-c31d665c0f56
 
 ## Installation
 VSCode allows breakpoints in files whose language has a registered debugger. So check if you actually have the extension that helps you to run the debugger
